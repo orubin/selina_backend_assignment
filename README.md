@@ -28,5 +28,5 @@ docker-compose run web rails test
 
 * Notes & Assumptions
     - Order can reserve one room
-    - 
-
+    - Booking a dorm room will check if there are any spots left in any of the rooms - so no same room gurantee for the whole time period
+    - Booking a private room will check if there is a specific room available for the whole time period - no switching of rooms
