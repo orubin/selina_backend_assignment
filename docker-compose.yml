@@ -1,0 +1,25 @@
+version: '3'
+services:
+  db:
+    image: 'postgres:latest'
+    ports: 
+      - "5432:5432"
+  web:
+    build: .
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/production
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: "3000"
+      PGHOST: "db"
+      PGUSER: "postgres"
+      PGDBNAME: "production"
+    depends_on:
+      - db
+  redis_db:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
